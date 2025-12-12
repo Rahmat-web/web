@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2025 Tax Return Customers</title>
+   <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+  
+    body {
+      margin: 0;
+      padding: 0;
+      background-color:#003366;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      color: #fff;
+    }
+    .container {
+	
+      width: 95%;
+      max-width: 1100px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(6px);
+      border-radius: 20px;
+	  align:center;
+      padding: 30px;
+     margin-top: 200px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    h1 {
+      text-align: center;
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+    .search-box {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-box input {
+      width: 80%;
+      max-width: 400px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+	  .div1 {
+      width: 100px;
+      max-width: 100%;
+      padding: 10px;
+      border: none;
+      font-size: 1rem;
+    }
+	
+	
+	
+    .customer-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+    .customer-card {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 12px;
+      transition: transform 0.3s ease;
+    }
+    .customer-card:hover { transform: translateY(-5px); }
+    .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      color: #fff;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    .male {
+      background: linear-gradient(135deg, #0066cc, #3399ff);
+      border: 3px solid #3399ff;
+    }
+    .female {
+      background: linear-gradient(135deg, #cc3399, #ff66cc);
+      border: 3px solid #ff66cc;
+    }
+    .info { flex: 1; }
+    .name { font-size: 1.05rem; font-weight: bold; }
+    .lastname { color: #ffcc00; }
+    .status { font-size: 0.9rem; color: #ddd; }
+	    /* Sticky nav effect */
+    .nav-shadow {
+      transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+    .nav-shadow.scrolled {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      background-color: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+	  padding:10px;
+    } 
+	:root{
+      --bg-a: #0f172a; /* slate-900 */
+      --bg-b: #1e293b; /* slate-800 */
+      --accent: #fb923c; /* orange-400/500 range */
+      --accent-strong: #f97316; /* orange-500/600 */
+    }
+	 html, body { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(1200px 500px at 20% 0%, rgba(251,146,60,0.12) 0%, transparent 50%),
+                  linear-gradient(135deg, var(--bg-a), var(--bg-b));
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: #e5e7eb;
+      overflow-x: hidden;
+    }
+
+  </style>
+</head>
+<body class="text-gray-100">
+<div class="gradient-line"></div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="w-full fixed top-0 left-0 z-50 nav-shadow">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-md bg-gradient-to-br from-orange-400 to-orange-600 shadow"></div>
+        <h1 class="text-xl md:text-2xl font-extrabold tracking-tight">WebTix Solution</h1>
+      </div>
+
+      <div class="hidden md:flex gap-6 font-medium text-gray-200">
+        <a href="index.html#home" class="hover:text-orange-400">Home</a>
+        <a href="index.html#about" class="hover:text-orange-400">About</a>
+        <a href="index.html#services" class="hover:text-orange-400">Services</a>
+        <a href="index.html#portfolio" class="hover:text-orange-400">Portfolio</a>
+        <a href="index.html#contact" class="hover:text-orange-400">Contact</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button aria-label="Open menu" class="hamburg md:hidden p-2 rounded hover:bg-white/10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" viewBox="0 0 448 512" fill="currentColor">
+          <path d="M0 96h448v64H0zm0 128h448v64H0zm0 128h448v64H0z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+ <div class="dropdown absolute bg-[#0f172a]/95 w-full left-0 top-[60px] shadow transform -translate-y-[400px] transition-all duration-300 md:hidden">
+      <div class="flex flex-col p-6 space-y-4 text-lg text-gray-200">
+        <a href="#home" class="hover:text-orange-400">Home</a>
+        <a href="#about" class="hover:text-orange-400">About</a>
+        <a href="#services" class="hover:text-orange-400">Services</a>
+        <a href="#portfolio" class="hover:text-orange-400">Portfolio</a>
+        <a href="#contact" class="hover:text-orange-400">Contact</a>
+        <button aria-label="Close menu" class="cancel mt-4 w-10 h-10 rounded bg-white/10 text-white hover:bg-white/20">✕</button>
+      </div>
+    </div>
+  </nav>
+ 
+  
+  
+  
+  <div class="container">
+    <h1>2025 Tax Return Customers 🎟️</h1>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search customer by name...">
+    </div>
+
+
+
+
+
+    <div class="customer-list" id="customerList">
+      <!-- FULL LIST -->
+      
+
+
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Fazal <span class="lastname">Ahmed</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Muhammad <span class="lastname">Imran (Iron)</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Muhammad <span class="lastname">Iqbal</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Shahid <span class="lastname">Gul</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Abdul <span class="lastname">Hameed</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Ambreen</div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Habib <span class="lastname">Ur Rehman</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Shabaz <span class="lastname">Soomro</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Jamal <span class="lastname">Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Abida <span class="lastname">Bibi</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Imtaiz <span class="lastname">Ahmed</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Maaz <span class="lastname">Imtiaz</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Usama <span class="lastname">Imtiaz</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Saleem <span class="lastname">Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Adnan <span class="lastname">Electronics</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Kamran <span class="lastname">Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Niazi</div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Samina</div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Basharat <span class="lastname">Ali</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Attiq Ur Rehman <span class="lastname">Qureshi</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Abdul <span class="lastname">Wahid</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Muhammad <span class="lastname">Sarwer</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Imran <span class="lastname">Ahmed</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Haroon <span class="lastname">Rasheed</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Allah <span class="lastname">Ditta</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Shoukat <span class="lastname">Ali</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Bushra <span class="lastname">Bibi</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Nazeer <span class="lastname">Muhammad</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Ruqiya</div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Allah <span class="lastname">Ditta</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Saira <span class="lastname">Bano</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Arsalan <span class="lastname">Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Enayat <span class="lastname">Ullah</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Bakht <span class="lastname">Nawab</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Bushra <span class="lastname">Jamal</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Shabana <span class="lastname">Kausar</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Ismail <span class="lastname">Ishaq</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">M. Ayaz <span class="lastname">Malik</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+
+
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Shoukat <span class="lastname">Ali</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Abdul <span class="lastname">Waheed</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Syed <span class="lastname">Ghani Shah</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Zohra <span class="lastname">Bibi</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Najm <span class="lastname">Us Sehar</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Maroof <span class="lastname">Shah</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Madiha <span class="lastname">Kanwal</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Sohail <span class="lastname">Dost</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Bilal <span class="lastname">Jadoon</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Muhammad <span class="lastname">Yousuf</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Mariam <span class="lastname">Bibi</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Tallat <span class="lastname">Pervez</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Abdul <span class="lastname">Ghafoor</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Sami <span class="lastname">Ullah</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Muhammad <span class="lastname">Hashim</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Nasira <span class="lastname">Sultana</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Parveen <span class="lastname">Hayat Awan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Samad <span class="lastname">Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Sohail <span class="lastname">Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Fazal <span class="lastname">Ur Rehman</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">M Imran <span class="lastname">Abu Bakar</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Azeema <span class="lastname">Ateeq</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Sahir <span class="lastname">Ahmed</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Muhammad <span class="lastname">Faisal</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Sadam <span class="lastname">Electronics</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Kishwar <span class="lastname">Ghazala</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Yasir <span class="lastname">Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Summaiya <span class="lastname">Bibi</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Shehr <span class="lastname">Bano</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Aqeel <span class="lastname">Ahmed</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Suleman <span class="lastname">Mairaj</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Hazrat <span class="lastname">Saeed</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Zia <span class="lastname">Ur Rehman</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Muhammad <span class="lastname">Fasih</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar female">👩</div><div class="info"><div class="name">Naseem <span class="lastname">Akhtar</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Gul <span class="lastname">Saeed</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Rashid <span class="lastname">Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Noor <span class="lastname">Ajab Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Tariq <span class="lastname">Hussain</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Abdullah</div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Abdul <span class="lastname">Samad (Sohail Shop)</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Javed <span class="lastname">Iqbal</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Asghar <span class="lastname">Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Syed <span class="lastname">Waris Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Naeem <span class="lastname">Khan</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Khubaib <span class="lastname">Sabir</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Haris</div><div class="status">Tax return filled successfully ✅</div></div></div>
+<div class="customer-card"><div class="avatar male">👨</div><div class="info"><div class="name">Ali <span class="lastname">Sher</span></div><div class="status">Tax return filled successfully ✅</div></div></div>
+
+
+
+
+
+   </div>
+  </div>
+
+  <script>
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const customerList = document.getElementById('customerList');
+    const cards = customerList.getElementsByClassName('customer-card');
+
+    searchInput.addEventListener('keyup', function() {
+      const filter = searchInput.value.toLowerCase();
+      for (let i = 0; i < cards.length; i++) {
+        const name = cards[i].getElementsByClassName('name')[0].innerText.toLowerCase();
+        cards[i].style.display = name.includes(filter) ? "" : "none";
+      }
+    });
+  </script>
+</body>
+</html>

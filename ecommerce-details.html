@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Details — WebTix Solution</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      font-family: 'Inter', sans-serif;
+      color: #e5e7eb;
+      overflow-x: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #fb923c, #f97316);
+      color: white;
+      border-radius: 12px;
+      padding: 0.75rem 1.25rem;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(251, 146, 60, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(251, 146, 60, 0.45);
+    }
+
+    /* Slider images */
+    .slide-img {
+      width: 100%;
+      height: 400px;          /* fixed height for uniform size */
+      object-fit: contain;    /* show full image without cropping */
+      background-color: #0f172a; /* backdrop for empty space */
+      border-radius: 16px;
+      border: 2px solid rgba(251,146,60,0.5);
+      box-shadow: 0 8px 20px rgba(251,146,60,0.25);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="w-full fixed top-0 left-0 z-50 bg-[#0f172a]/80 backdrop-blur-md shadow">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <h1 class="text-xl md:text-2xl font-extrabold tracking-tight">WebTix Solution</h1>
+      <a href="index.html" class="btn-primary text-sm">Back to Portfolio</a>
+    </div>
+  </nav>
+
+  <!-- PROJECT DETAILS -->
+  <section class="pt-28 pb-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <!-- Title & Meta -->
+      <div class="p-8 mb-10 bg-white/10 backdrop-blur-md rounded-xl">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-orange-400">E-commerce Platform</h2>
+        <p class="text-gray-300 mb-4">
+          A modern e-commerce solution with secure checkout, product management, and analytics dashboard.
+          Designed for scalability and seamless user experience.
+        </p>
+        <div class="flex flex-wrap gap-6 text-sm text-gray-400">
+          <div><span class="font-semibold text-orange-400">Completion Time:</span> 3 Months</div>
+          <div><span class="font-semibold text-orange-400">Tech Stack:</span> PHP, MySQL, Tailwind, JS</div>
+          <div><span class="font-semibold text-orange-400">Client:</span> Startup Retail</div>
+        </div>
+      </div>
+
+      <!-- Image Slider -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="assets/p1.png" alt="Project image 1" class="slide-img"/></div>
+          <div class="swiper-slide"><img src="assets/p2.png" alt="Project image 2" class="slide-img"/></div>
+          <div class="swiper-slide"><img src="assets/p3.png" alt="Project image 3" class="slide-img"/></div>
+          <div class="swiper-slide"><img src="assets/p4.png" alt="Project image 4" class="slide-img"/></div>
+        </div>
+        <!-- Navigation buttons -->
+        <div class="swiper-button-next text-orange-400"></div>
+        <div class="swiper-button-prev text-orange-400"></div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="mt-12 text-center">
+        <a href="#contact" class="btn-primary">Start Your Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Contact</h2>
+      <form class="grid md:grid-cols-2 gap-6 p-6 bg-white/10 backdrop-blur-md rounded-xl">
+        <input type="text" placeholder="Name" class="bg-transparent border border-white/20 rounded-lg p-3 w-full focus:outline-none focus:border-orange-400"/>
+        <input type="email" placeholder="Email" class="bg-transparent border border-white/20 rounded-lg p-3 w-full focus:outline-none focus:border-orange-400"/>
+        <input type="text" placeholder="Subject" class="bg-transparent border border-white/20 rounded-lg p-3 md:col-span-2 w-full focus:outline-none focus:border-orange-400"/>
+        <textarea placeholder="Message" rows="5" class="bg-transparent border border-white/20 rounded-lg p-3 md:col-span-2 w-full focus:outline-none focus:border-orange-400"></textarea>
+        <button type="submit" class="btn-primary md:col-span-2">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 text-center text-gray-400">
+    © 2025 WebTix Solution — All Rights Reserved
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      autoplay: { delay: 3000, disableOnInteraction: false },
+    });
+  </script>
+
+  <!-- AOS Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 1, once: true, duration: 800, easing: 'ease-out-cubic' });
+  </script>
+</body>
+</html>

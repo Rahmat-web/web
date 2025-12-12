@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Gallery</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+</head>
+
+<body class="text-white" style="background: linear-gradient(135deg, #0a0a1a, #121236);">
+
+    <!-- NAVBAR -->
+    <nav class="w-full bg-white shadow fixed top-0 left-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+            <h1 class="text-2xl font-bold text-gray-900">Portfolio</h1>
+
+            <div class="hidden md:flex gap-6 font-medium">
+                <a href="index.html" class="hover:text-blue-600">Home</a>
+                <a href="services.html" class="hover:text-blue-600">Services</a>
+                <a href="graphics.html" class="text-blue-600 font-semibold">Gallery</a>
+                <a href="index.html#about" class="hover:text-blue-600">About</a>
+                <a href="index.html#contact" class="hover:text-blue-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- PAGE HEADER -->
+    <section class="pt-28 pb-10 text-center">
+        <h2 class="text-4xl font-bold mb-2" data-aos="fade-up">Graphic Gallery</h2>
+        <p class="text-gray-300 text-lg" data-aos="fade-up" data-aos-delay="200">
+            A collection of designed graphics & posters.
+        </p>
+    </section>
+
+
+    <!-- GALLERY GRID -->
+    <section class="max-w-7xl mx-auto px-4 pb-20 grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+        <!-- Auto-generate images 1 to 15 (you can add more, just duplicate) -->
+        <!-- Image Box -->
+        <div data-aos="zoom-in"><img src="BGHRAPICS/1.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+        <div data-aos="zoom-in"><img src="BGHRAPICS/2.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+        <div data-aos="zoom-in"><img src="BGHRAPICS/3.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+        <div data-aos="zoom-in"><img src="BGHRAPICS/4.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+        <div data-aos="zoom-in"><img src="BGHRAPICS/5.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+        <div data-aos="zoom-in"><img src="BGHRAPICS/6.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+        <div data-aos="zoom-in"><img src="BGHRAPICS/7.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+        <div data-aos="zoom-in"><img src="BGHRAPICS/8.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+        <div data-aos="zoom-in"><img src="BGHRAPICS/9.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+        <div data-aos="zoom-in"><img src="BGHRAPICS/10.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+        <div data-aos="zoom-in"><img src="BGHRAPICS/11.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+        <div data-aos="zoom-in"><img src="BGHRAPICS/12.png" class="w-full rounded-lg shadow-lg cursor-pointer gallery-img"></div>
+
+    </section>
+
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
+        <img id="lightbox-img" class="w-4/5 max-w-2xl rounded-xl shadow-lg" />
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="py-6 text-center text-gray-300">
+        © 2025 WebTix Solution — All Rights Reserved
+    </footer>
+
+
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>AOS.init({ offset: 1 });</script>
+
+    <!-- LIGHTBOX JS -->
+    <script>
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+
+        document.querySelectorAll(".gallery-img").forEach(img => {
+            img.addEventListener("click", () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.remove("hidden");
+                lightbox.classList.add("flex");
+            });
+        });
+
+        lightbox.addEventListener("click", () => {
+            lightbox.classList.add("hidden");
+            lightbox.classList.remove("flex");
+        });
+    </script>
+
+</body>
+</html>

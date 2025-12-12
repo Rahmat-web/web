@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Details — WebTix Solution</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      font-family: 'Inter', sans-serif;
+      color: #e5e7eb;
+      overflow-x: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #fb923c, #f97316);
+      color: white;
+      border-radius: 12px;
+      padding: 0.75rem 1.25rem;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(251, 146, 60, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(251, 146, 60, 0.45);
+    }
+
+    /* Slider images */
+   .slide-img {
+  width: 500px;
+  height: 400px;              /* fixed height for uniform size */
+  object-fit: contain;        /* show full image without cropping */
+  background-color: #fffff;  /* backdrop for empty space */
+  border-radius: 16px;
+  border: 2px solid rgba(251,146,60,0.5);
+  box-shadow: 0 8px 20px rgba(251,146,60,0.25);
+  display: block;             /* ensures margin auto works */
+  margin: 0 auto;             /* centers horizontally */
+}
+  </style>
+</head>
+<body>
+
+ <nav id="navbar" class="w-full fixed top-0 left-0 z-50 nav-shadow">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-md bg-gradient-to-br from-orange-400 to-orange-600 shadow"></div>
+        <h1 class="text-xl md:text-2xl font-extrabold tracking-tight">WebTix Solution</h1>
+      </div>
+
+      <div class="hidden md:flex gap-6 font-medium text-gray-200">
+        <a href="index.html" class="hover:text-orange-400">Home</a>
+        <a href="index.html#about" class="hover:text-orange-400">About</a>
+		   
+        <a href="index.html#services" class="hover:text-orange-400">Services</a>
+        <a href="#portfolio" class="hover:text-orange-400">Portfolio</a>
+        <a href="#contact" class="hover:text-orange-400">Contact</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button aria-label="Open menu" class="hamburg md:hidden p-2 rounded hover:bg-white/10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" viewBox="0 0 448 512" fill="currentColor">
+          <path d="M0 96h448v64H0zm0 128h448v64H0zm0 128h448v64H0z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="dropdown absolute bg-[#0f172a]/95 w-full left-0 top-[60px] shadow transform -translate-y-[400px] transition-all duration-300 md:hidden">
+      <div class="flex flex-col p-6 space-y-4 text-lg text-gray-200">
+        <a href="#home" class="hover:text-orange-400">Home</a>
+        <a href="#about" class="hover:text-orange-400">About</a>
+        <a href="#services" class="hover:text-orange-400">Services</a>
+        <a href="#portfolio" class="hover:text-orange-400">Portfolio</a>
+        <a href="#contact" class="hover:text-orange-400">Contact</a>
+        <button aria-label="Close menu" class="cancel mt-4 w-10 h-10 rounded bg-white/10 text-white hover:bg-white/20">✕</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="pt-28 pb-20">
+<div class="mt-20 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-orange-400">Project Gallry </h1>
+      </div></div>
+<!-- Centered Swiper with Half White Background -->
+<div class="flex justify-center">
+  <div class="swiper mySwiper w-1/2 bg-white rounded-xl p-6 shadow-lg">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide flex justify-center">
+        <img src="assets/Tic.png" alt="Project image 1" class="slide-img"/>
+      </div>
+      <div class="swiper-slide flex justify-center">
+        <img src="assets/p72.png" alt="Project image 2" class="slide-img"/>
+      </div>
+      <div class="swiper-slide flex justify-center">
+        <img src="assets/p73.png" alt="Project image 3" class="slide-img"/>
+      </div>
+      <div class="swiper-slide flex justify-center">
+        <img src="assets/p74.png" alt="Project image 4" class="slide-img"/>
+      </div>
+    </div>
+    <!-- Navigation buttons -->
+    <div class="swiper-button-next text-orange-400"></div>
+    <div class="swiper-button-prev text-orange-400"></div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+    
+    <!-- Navigation buttons -->
+
+
+  <!-- PROJECT DETAILS -->
+  <section class="pt-28 pb-20">
+  <div class="max-w-5xl mx-auto px-4">
+    <!-- Title & Meta -->
+    <div class="p-8 mb-10 bg-white/10 backdrop-blur-md rounded-xl">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-orange-400">Tic Tac Toe Game (C# Windows Forms)</h2>
+      <p class="text-gray-300 mb-4 leading-relaxed">
+ This project involved the development of a two-player Tic Tac Toe game using C# and
+ Windows Forms Application, created for the Parallel and Distributed Computing course. 
+ The simulation delivers a classic board game experience on a desktop environment,
+ prioritizing a responsive interface and robust game logic. Key features implemented include an
+ interactive graphical interface designed for a seamless and engaging user experience.
+ The core game logic was meticulously developed to automatically detect and declare win, loss,
+ and draw conditions in real-time. The system provides clear visual indicators and real-time updates
+ for player turns (X and O), utilizing buttons and labels to construct a clean, intuitive game board and scoreboard.
+ Essential functionalities such as reset and restart were included to enable continuous play without needing to relaunch the application.
+ The codebase utilized modular programming principles for enhanced readability and maintainability, with careful attention paid to error handling
+ to prevent invalid moves and ensure application stability. Furthermore, the user experience was enhanced through dynamic color
+ changes and responsive layout adjustments, demonstrating proficiency in event-driven programming using the C# Windows Forms framework.
+</p>
+
+	 <h3 class="text-xl font-semibold text-orange-400 mb-4">Tools & Technologies</h3>
+      <div class="flex flex-wrap gap-6 text-sm text-gray-400">
+          <div><span class="font-semibold text-orange-400">C# (.NET Framework):</span>Core programming language for logic and event handling</div>
+          <div><span class="font-semibold text-orange-400">Windows Forms:</span> GUI framework for building the desktop interface</div>
+          <div><span class="font-semibold text-orange-400">Visual Studio:</span>Integrated development environment for coding, debugging, and testing</div>
+		 
+        </div>
+      </div>
+
+</section>
+
+      <!-- Image Slider -->
+    
+
+      <!-- Call to Action -->
+      <div class="mt-12 text-center">
+        <a href="#contact" class="btn-primary">Start Your Project</a>
+      </div>
+    </div>
+  </section>
+
+   <!-- CONTACT -->
+  <section id="contact" class="py-20">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Contact</h2>
+      <div class="p-6 bg-white/10 backdrop-blur-md rounded-xl space-y-6">
+        <!-- WhatsApp -->
+        <a href="https://wa.me/923486052758" target="_blank" 
+           class="btn-primary block w-full md:w-auto mx-auto">
+          Contact via WhatsApp
+        </a>
+        <!-- Email -->
+        <a href="mailto:info@webtixsolution.com" 
+           class="btn-primary block w-full md:w-auto mx-auto">
+          Contact via Email
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="py-8 text-center text-gray-400">
+    © 2025 WebTix Solution — All Rights Reserved
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+      pagination: { el: ".swiper-pagination", clickable: true },
+      navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+      autoplay: { delay: 3000, disableOnInteraction: false },
+    });
+  </script>
+
+  <!-- AOS Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 1, once: true, duration: 800, easing: 'ease-out-cubic' });
+  </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services — WebTix Solution</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      font-family: 'Inter', sans-serif;
+      color: #e5e7eb;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #fb923c, #f97316);
+      color: white;
+      border-radius: 12px;
+      padding: 0.75rem 1.25rem;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(251, 146, 60, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(251, 146, 60, 0.45);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="w-full fixed top-0 left-0 z-50 bg-[#0f172a]/80 backdrop-blur-md shadow">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <h1 class="text-xl md:text-2xl font-extrabold tracking-tight">WebTix Solution</h1>
+      <div class="hidden md:flex gap-6 font-medium text-gray-200">
+        <a href="index.html" class="hover:text-orange-400">Home</a>
+        <a href="about.html" class="hover:text-orange-400">About</a>
+        <a href="services.html" class="hover:text-orange-400">Services</a>
+        <a href="portfolio.html" class="hover:text-orange-400">Portfolio</a>
+        <a href="contact.html" class="hover:text-orange-400">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SERVICES -->
+  <section class="pt-28 pb-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-orange-400">Our Services</h2>
+      <p class="text-gray-300 mb-12">We provide high-quality digital solutions tailored for businesses and startups.</p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Service 1 -->
+        <div class="glass p-6">
+          <img src="assets/p1.png" alt="Web Development" class="w-full h-48 object-contain rounded-lg mb-4"/>
+          <h3 class="text-xl font-semibold mb-2 text-orange-400">Web Development</h3>
+          <p class="text-gray-200">Modern, fast, and responsive websites built using the latest technologies.</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="glass p-6">
+          <img src="assets/p2.png" alt="UI/UX Design" class="w-full h-48 object-contain rounded-lg mb-4"/>
+          <h3 class="text-xl font-semibold mb-2 text-orange-400">UI / UX Design</h3>
+          <p class="text-gray-200">Beautiful and intuitive user interfaces with world-class user experience.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="glass p-6">
+          <img src="assets/p3.png" alt="Branding" class="w-full h-48 object-contain rounded-lg mb-4"/>
+          <h3 class="text-xl font-semibold mb-2 text-orange-400">Branding & Identity</h3>
+          <p class="text-gray-200">Strong branding solutions including logos, color palettes & identity systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-orange-400">Contact Us</h2>
+      <p class="text-gray-300 mb-8">We’d love to hear from you! Reach out via email, phone, or WhatsApp.</p>
+
+      <div class="space-y-4 text-lg">
+        <p><span class="font-semibold text-orange-400">Email:</span> 
+          <a href="mailto:webtixsol@gmail.com" class="hover:text-orange-400">webtixsol@gmail.com</a>
+        </p>
+        <p><span class="font-semibold text-orange-400">Mobile:</span> 
+          <a href="tel:03486052758" class="hover:text-orange-400">03486052758</a>
+        </p>
+        <p><span class="font-semibold text-orange-400">WhatsApp:</span> 
+          <a href="https://wa.me/923486052758" target="_blank" class="hover:text-orange-400">03486052758</a>
+        </p>
+      </div>
+
+      <div class="mt-8">
+        <a href="mailto:webtixsol@gmail.com" class="btn-primary">Send Email</a>
+        <a href="https://wa.me/923486052758" target="_blank" class="btn-primary ml-3">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 text-center text-gray-400">
+    © 2025 WebTix Solution — All Rights Reserved
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WebTix Solution — Modern Portfolio</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-a: #0f172a; /* slate-900 */
+      --bg-b: #1e293b; /* slate-800 */
+      --accent: #fb923c; /* orange-400/500 range */
+      --accent-strong: #f97316; /* orange-500/600 */
+    }
+
+    html, body { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(1200px 500px at 20% 0%, rgba(251,146,60,0.12) 0%, transparent 50%),
+                  linear-gradient(135deg, var(--bg-a), var(--bg-b));
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: #e5e7eb;
+      overflow-x: hidden;
+    }
+
+    /* Decorative gradient lines */
+    .gradient-line {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(600px 200px at 75% 20%, rgba(251,146,60,0.12), transparent 60%),
+        radial-gradient(700px 300px at 10% 80%, rgba(59,130,246,0.10), transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+    }
+
+    /* Hero Portrait */
+    .portrait-wrap {
+      position: relative;
+      width: 360px;
+      height: 500px;
+      isolation: isolate; /* keeps glow contained */
+    }
+
+    .abstract-shape {
+      position: absolute;
+      top: 24px;
+      left: -20px;
+      width: 110%;
+      height: 110%;
+      background: linear-gradient(135deg, #ff6a00, #ff9e00);
+      border-radius: 70% 40% 30% 60% / 60% 40% 70% 40%;
+      z-index: 1;
+      border: 6px solid transparent;
+      background-clip: padding-box;
+      animation: glowBorder 4s infinite ease-in-out;
+      filter: saturate(115%);
+    }
+
+    @keyframes glowBorder {
+      0% {
+        box-shadow:
+          0 0 18px rgba(255, 140, 0, 0.40),
+          0 0 36px rgba(255, 180, 0, 0.45);
+      }
+      50% {
+        box-shadow:
+          0 0 32px rgba(255, 200, 0, 0.80),
+          0 0 64px rgba(255, 180, 0, 0.70);
+      }
+      100% {
+        box-shadow:
+          0 0 18px rgba(255, 140, 0, 0.40),
+          0 0 36px rgba(255, 180, 0, 0.45);
+      }
+    }
+
+    .person {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      background: url('assets/profile.png') center/cover no-repeat;
+      border-radius: 38px;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.35);
+    }
+
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 26px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .glass:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.28);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+    }
+
+    /* Accent underline */
+    .accent-underline {
+      position: relative;
+      display: inline-block;
+    }
+    .accent-underline::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      border-radius: 999px;
+    }
+
+    /* Sticky nav effect */
+    .nav-shadow {
+      transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+    .nav-shadow.scrolled {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      background-color: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+      color: white;
+      border-radius: 12px;
+      padding: 0.75rem 1.25rem;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(251, 146, 60, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(251, 146, 60, 0.45);
+    }
+
+    /* Section spacing tweaks for mobile */
+    @media (max-width: 768px) {
+      .portrait-wrap { width: 300px; height: 430px; }
+      .abstract-shape { left: -10px; width: 108%; height: 108%; }
+    }
+	
+	
+ 
+  
+  
+    .btn {
+     
+      color: #00c896;
+      
+      font-size: 16px;
+   
+      text-decoration: none;
+    }
+    .btn:hover {
+    color: #fffff;
+    }
+  
+  </style>
+</head>
+<body class="text-gray-100">
+  <div class="gradient-line"></div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="w-full fixed top-0 left-0 z-50 nav-shadow">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <div class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-md bg-gradient-to-br from-orange-400 to-orange-600 shadow"></div>
+        <h1 class="text-xl md:text-2xl font-extrabold tracking-tight">WebTix Solution</h1>
+      </div>
+
+      <div class="hidden md:flex gap-6 font-medium text-gray-200">
+        <a href="#home" class="hover:text-orange-400">Home</a>
+        <a href="#about" class="hover:text-orange-400">About</a>
+        <a href="#services" class="hover:text-orange-400">Services</a>
+        <a href="#portfolio" class="hover:text-orange-400">Portfolio</a>
+        <a href="#contact" class="hover:text-orange-400">Contact</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button aria-label="Open menu" class="hamburg md:hidden p-2 rounded hover:bg-white/10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" viewBox="0 0 448 512" fill="currentColor">
+          <path d="M0 96h448v64H0zm0 128h448v64H0zm0 128h448v64H0z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="dropdown absolute bg-[#0f172a]/95 w-full left-0 top-[60px] shadow transform -translate-y-[400px] transition-all duration-300 md:hidden">
+      <div class="flex flex-col p-6 space-y-4 text-lg text-gray-200">
+        <a href="#home" class="hover:text-orange-400">Home</a>
+        <a href="#about" class="hover:text-orange-400">About</a>
+        <a href="#services" class="hover:text-orange-400">Services</a>
+        <a href="#portfolio" class="hover:text-orange-400">Portfolio</a>
+        <a href="#contact" class="hover:text-orange-400">Contact</a>
+        <button aria-label="Close menu" class="cancel mt-4 w-10 h-10 rounded bg-white/10 text-white hover:bg-white/20">✕</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="pt-28 md:pt-36 pb-16 md:pb-24">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+      <div class="flex-1">
+        <h1 class="text-4xl md:text-3xl font-extrabold leading-tight">I can help your business to </h1>
+
+        <h1 data-aos="fade-right" data-aos-duration="1000" class="text-4xl md:text-6xl font-extrabold leading-tight">
+          Grow through powerful <span class="accent-underline">
+		  
+		  
+		  
+		  
+		  and innovative</span>  app and website development
+        </h1>
+
+        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"
+           class="mt-4 text-gray-300 max-w-xl">
+          My goal is to create digital solutions that highlight your brand’s strengths and deliver an engaging experience for your customers. With high quality, strong performance,
+		  and unique design.
+        </p>
+
+        <div class="mt-6 flex gap-3">
+          <a href="#portfolio" class="btn-primary">View Work</a>
+		     <a href="happy.html" class="btn-primary">Happy Client</a>
+          <a href="#contact" class="px-4 py-3 rounded-lg border border-white/20 hover:bg-white/10 transition">Get in touch</a>
+        </div>
+      </div>
+	  
+	  
+	  
+
+      <!-- Portrait -->
+      <div class="portrait-wrap" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="abstract-shape"></div>
+        <div class="person"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="pb-8">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-3 md:grid-cols-6 gap-4">
+      <div class="glass p-4 text-center">
+        <div class="text-2xl font-bold text-orange-400">5+</div>
+        <div class="text-xs text-gray-300">Years</div>
+      </div>
+      <div class="glass p-4 text-center">
+        <div class="text-2xl font-bold text-orange-400">4+</div>
+        <div class="text-xs text-gray-300">Projects</div>
+      </div>
+      <div class="glass p-4 text-center">
+        <div class="text-2xl font-bold text-orange-400">100+</div>
+        <div class="text-xs text-gray-300">Client</div>
+      </div>
+      <div class="glass p-4 text-center">
+        <div class="text-2xl font-bold text-orange-400">100%</div>
+        <div class="text-xs text-gray-300">Client Focus</div>
+      </div>
+      <div class="glass p-4 text-center">
+        <div class="text-2xl font-bold text-orange-400">24/7</div>
+        <div class="text-xs text-gray-300">Support</div>
+      </div>
+      <div class="glass p-4 text-center">
+        <div class="text-2xl font-bold text-orange-400">∞</div>
+        <div class="text-xs text-gray-300">Creativity</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="pt-10 pb-16 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-2">Services</h2>
+    <p class="text-gray-300 text-lg">High-quality solutions for businesses & startups.</p>
+  </section>
+
+  <section class="pb-24">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+      <div data-aos="fade-up" class="glass p-6">
+        <img src="assets/service1.png" class="w-full h-48 object-cover rounded-lg mb-4" alt="Web development">
+        <h3 class="text-xl font-semibold mb-2 text-orange-400">Tax Consultancy and Return Filling </h3>
+        <p class="text-gray-200">Struggling with taxes or need NTN registration?
+We handle NTN registration (including small businesses), tax return filing, and all your tax worries — fast, accurate, and reliable!  
+Call us today and make tax easy!</p>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="150" class="glass p-6">
+        <img src="assets/web.png" class="w-full h-48 object-cover rounded-lg mb-4" alt="UI UX design">
+        <h3 class="text-xl font-semibold mb-2 text-orange-400">Web Development</h3>
+        <p class="text-gray-200">Crafting fast, accessible, and SEO-optimized websites using modern technologies like HTML, CSS, JavaScript, and responsive frameworks. Focused on delivering user-friendly experiences with
+		clean design, efficient performance, and strong search engine visibility.</p>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="300" class="glass p-6">
+        <img src="assets/mobile.png" class="w-full h-48 object-cover rounded-lg mb-4" alt="Branding">
+        <h3 class="text-xl font-semibold mb-2 text-orange-400">Mobile Application</h3>
+        <p class="text-gray-200">Creating research-driven, intuitive interfaces that guide users effortlessly and boost conversion rates. Every layout is crafted with purpose — blending usability, clarity,
+		and emotional impact to turn visitors into customers..</p>
+      </div>
+	  <div data-aos="fade-up" data-aos-delay="300" class="glass p-6">
+        <img src="assets/mobile.png" class="w-full h-48 object-cover rounded-lg mb-4" alt="Branding">
+        <h3 class="text-xl font-semibold mb-2 text-orange-400">Branding & Identity</h3>
+        <p class="text-gray-200">Distinctive identities, cohesive systems, and guidelines.</p>
+     </p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+      <div data-aos="fade-right">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">About</h2>
+        <p class="text-gray-300 mb-4">
+          WebTix Solution is a Rawalpindi-based studio delivering end-to-end digital products.
+          We focus on clarity, performance, and measurable impact.
+        </p>
+        <p class="text-gray-300">
+          Our approach blends UX research and iterative development to reduce complexity, increase velocity,
+          and ship experiences users love.
+        </p>
+        <div class="mt-6 flex gap-3">
+          <a href="#contact" class="btn-primary">Start a project</a>
+          <a href="#portfolio" class="px-4 py-3 rounded-lg border border-white/20 hover:bg-white/10 transition">See portfolio</a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="glass p-5" data-aos="zoom-in">
+          <h4 class="font-semibold text-orange-400 mb-2">Front-end</h4>
+          <p class="text-sm text-gray-300">HTML, CSS, Tailwind, JS, animations</p>
+        </div>
+        <div class="glass p-5" data-aos="zoom-in" data-aos-delay="100">
+          <h4 class="font-semibold text-orange-400 mb-2">Back-end</h4>
+          <p class="text-sm text-gray-300">PHP, MySQL, C#, .NET, SQL Server</p>
+        </div>
+        <div class="glass p-5" data-aos="zoom-in" data-aos-delay="200">
+          <h4 class="font-semibold text-orange-400 mb-2">Design</h4>
+          <p class="text-sm text-gray-300">Figma, Photoshop, Canva, branding</p>
+        </div>
+        <div class="glass p-5" data-aos="zoom-in" data-aos-delay="300">
+          <h4 class="font-semibold text-orange-400 mb-2">Delivery</h4>
+          <p class="text-sm text-gray-300">Docs, resumes, case studies, QA</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold">Selected Work</h2>
+        <a href="#contact" class="hidden md:inline btn-primary">Request a quote</a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+	 
+        <div class="glass p-4" data-aos="zoom-in">
+		 <a href="project.html" >
+          <img src="assets/p1cover.png" alt="E-commerce platform" class="w-full h-48 object-cover rounded-lg mb-3"/>
+          <h3 class="font-semibold text-lg">Student & Faculty  Relationship APP</h3>
+         <p>A smart solution for seamless academic communication and engagement.<br>
+       Birthday alerts, event sharing, emoji chat, admin control, and secure backend. <a href="project.html" class="btn">See More</a></p>
+      	</a>  </div>
+	
+
+	  <div class="glass p-4" data-aos="zoom-in" data-aos-delay="300">
+	  <a href="banking-details.html" >
+          <img src="assets/atm.png" alt="ATM Simulator" class="w-full h-48 object-cover rounded-lg mb-3"/>
+          <h3 class="font-semibold text-lg">ATM Simulator</h3>
+         <p>Designed and deployed a virtual banking network using Oracle VirtualBox.<br>
+       Windows Server, Active Directory, DNS/DHCP, and client systems simulate real banking operations. <a href="banking-details.html" class="btn">See More</a></p>
+        </a></div>
+		
+		
+        <div class="glass p-4" data-aos="zoom-in" data-aos-delay="150">
+<a href="E-commerce.html" > 
+ <img src="assets/ecom.png" alt="Bus Ticketing System" class="w-full h-48 object-cover rounded-lg mb-3"/>
+          <h3 class="font-semibold text-lg">E-commerce Shop</h3>
+              <p>Comprehensive online shopping platform with secure login, product catalog, cart, checkout, and admin tools.
+       Built using PHP, MySQL, Bootstrap, and more for a responsive and optimized experience.<a href="E-commerce.html" class="btn">See More</a></p>
+  </a>
+        </div>
+        <div class="glass p-4" data-aos="zoom-in" data-aos-delay="150">
+		<a href="banknetwork-details.html" >
+          <img src="assets/network.png" alt="Bus Ticketing System" class="w-full h-48 object-cover rounded-lg mb-3"/>
+          <h3 class="font-semibold text-lg">Banking Network System</h3>
+              <p>Designed and deployed a virtual banking network environment using Oracle VirtualBox. Installed and configured Windows Server 2012/2016 as
+			  the main bank server, and connected multiple Windows 8 client
+			  systems for centralized control..<a href="banknetwork-details.html" class="btn">See More</a></p>
+  </a>
+        </div>	
+		
+		
+		
+		
+        <div class="glass p-4" data-aos="zoom-in" data-aos-delay="300">
+		<a href="bus-details.html" >
+          <img src="assets/bus.png" alt="ATM Simulator" class="w-full h-48 object-cover rounded-lg mb-3"/>
+          <h3 class="font-semibold text-lg">Online Bus Ticket System </h3>
+           <p>Desktop-based application built with C# and SQL Server.
+       Enables route search, seat reservation, ticket printing, and admin management with real-time updates...<a href="bus-details.html" class="btn">See More</a></p>
+  </a>
+        </div>
+ <div class="glass p-4" data-aos="zoom-in" data-aos-delay="300">
+ <a href="tic-details.html" >
+          <img src="assets/tic.png" alt="ATM Simulator" class="w-full h-48 object-cover rounded-lg mb-3"/>
+          <h3 class="font-semibold text-lg">Tic Tac Toe Game</h3>
+           <p>Desktop-based application built with C# and SQL Server.Two-player desktop game built with C# and Windows Forms.
+       Features responsive UI, win/draw detection, reset option, and event-driven programming.  <a href="tic-details.html" class="btn">See More</a></p>
+  </a>
+        </div>
+		
+		
+		
+		
+		
+		
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Contact</h2>
+      <form class="grid md:grid-cols-2 gap-6 glass p-6">
+        <input type="text" placeholder="Name" class="bg-transparent border border-white/20 rounded-lg p-3 w-full focus:outline-none focus:border-orange-400"/>
+        <input type="email" placeholder="Email" class="bg-transparent border border-white/20 rounded-lg p-3 w-full focus:outline-none focus:border-orange-400"/>
+        <input type="text" placeholder="Subject" class="bg-transparent border border-white/20 rounded-lg p-3 md:col-span-2 w-full focus:outline-none focus:border-orange-400"/>
+        <textarea placeholder="Message" rows="5" class="bg-transparent border border-white/20 rounded-lg p-3 md:col-span-2 w-full focus:outline-none focus:border-orange-400"></textarea>
+        <button type="submit" class="btn-primary md:col-span-2">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 text-center text-gray-300">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="mb-3 text-sm">© 2025 WebTix Solution — All Rights Reserved</div>
+      <div class="text-xs text-gray-400">Built with clean code,
+	  great design, and a little glow ✦</div>
+    </div>
+  </footer>
+
+  <!-- AOS Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js">
+  
+  
+  
+  </script>
+  <script>
+    AOS.init({
+      offset: 1,
+      once: true,
+      duration: 800,
+      easing: 'ease-out-cubic'
+    });
+  </script>
+
+  <!-- Navbar + mobile menu + scroll effects -->
+  <script>
+    const hamburg = document.querySelector('.hamburg');
+    const cancel = document.querySelector('.cancel');
+    const dropdown = document.querySelector('.dropdown');
+    const navbar = document.getElementById('navbar');
+
+    // Mobile menu toggle
+    if (hamburg && dropdown) {
+      hamburg.addEventListener("click", () => {
+        dropdown.style.transform = "translateY(0px)";
+        hamburg.style.display = "none";
+      });
+    }
+    if (cancel && dropdown) {
+      cancel.addEventListener("click", () => {
+        dropdown.style.transform = "translateY(-400px)";
+        hamburg.style.display = "block";
+      });
+    }
+
+    // Add shadow on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 4) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
